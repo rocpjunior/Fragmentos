@@ -29,8 +29,6 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-
-
         supportActionBar?.hide() //Esconde a barra de navegação superior
         val fragmento = Termo() //Obtem o novo elemento
         fragmento.show(supportFragmentManager, "AlertFragmento") //Renderiza o elemento
@@ -40,16 +38,13 @@ class MainActivity : AppCompatActivity() {
             .into(imagemPerfil)
 
         var tem = false
-
-
         if (checkSelfPermission(android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-            tem = true
-
-        } else
+                tem = true
+            }
+        else
             requestPermissions(arrayOf(Manifest.permission.CAMERA), 400)
 
         val btnAlterar = findViewById<Button>(R.id.btnAlterar)
-
         btnAlterar.setOnClickListener {
             if (tem) {
                 val intencao = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -57,8 +52,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Você não autorizou o uso da câmera", Toast.LENGTH_LONG).show()
             }
-
-
         }
         val fabCards = findViewById<FloatingActionButton>(R.id.fabCards)
         fabCards.setOnClickListener {
